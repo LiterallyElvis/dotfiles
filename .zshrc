@@ -94,6 +94,7 @@ function update_terminal(){
 }
 
 function klear(){
+    # http://apple.stackexchange.com/questions/31872/how-do-i-reset-the-scrollback-in-the-terminal-via-a-shell-command/31887#31887
     osascript -e 'if application "Terminal" is frontmost then tell application "System Events" to keystroke "k" using command down'
 }
 
