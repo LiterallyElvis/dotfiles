@@ -17,8 +17,8 @@ export PATH=/Users/jeffrey/.bin:$PATH
 export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 
 # Golang stuff
-export GOPATH=$HOME/golang
 export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/golang
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
@@ -76,6 +76,11 @@ function whats_running_on(){
 
 function style_check(){
     flake8 --ignore=E309,E501,E301 --exclude=".env*" .
+}
+
+function docker_clean(){
+    docker rm -v $(docker ps -a -q -f status=exited)
+    docker rmi $(docker images -f "dangling=true" -q)
 }
 
 function edit_commands(){
